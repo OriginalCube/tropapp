@@ -9,6 +9,7 @@ const checkCon = async () => {
 
 const registerAccount = async (data) => {
   const createAccount = await axios.post(api_url + "/user/register", data);
+  console.log(createAccount);
   return createAccount;
 };
 

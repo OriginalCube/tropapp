@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken");
 const createAccount = async (req, res) => {
   const { firstname, lastname, username, password, email, id, birthday } =
     req.body;
-
-  const userExist = await UserModel.findOne(email);
+  const userExist = await UserModel.findOne({ email: email });
+  console.log(userExist);
 
   if (userExist) {
-    res.status(400).json({ message: "Error: Email is already in use." });
+    res.json({ message: "Error: Email is already in use." });
   } else {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -29,8 +29,6 @@ const createAccount = async (req, res) => {
       res.json({ message: "Error: Account creation failed." });
     }
   }
-
-  res.send("Creating Account...");
 };
 
 const loginAccount = (req, res) => {
