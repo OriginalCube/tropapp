@@ -7,6 +7,16 @@ const checkCon = async () => {
   return getData.data;
 };
 
-const Auth = { checkCon };
+const registerAccount = async (data) => {
+  const createAccount = await axios.post(api_url + "/user/register", data);
+  return createAccount;
+};
+
+const loginAccount = async (data) => {
+  const loginAccount = await axios.post(api_url + "/user/login", data);
+  return loginAccount;
+};
+
+const Auth = { checkCon, registerAccount, loginAccount };
 
 export default Auth;
