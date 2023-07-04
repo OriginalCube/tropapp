@@ -31,9 +31,24 @@ const createAccount = async (req, res) => {
   }
 };
 
-const loginAccount = (req, res) => {
-  console.log(req.body);
-  res.send("Loging in Account...");
+const loginAccount = async (req, res) => {
+  const { username, password } = req.body;
+  const userExist = await UserModel.findOne({ username: username });
+
+  if (!userExist) {
+    res.json({ message: "Invalid credentials." });
+  } else if (
+    userExist &&
+    (await bcrypt.compare(password, userExist.password))
+  ) {
+    res
+      .status(200)
+      .json({ res: { token: genJWT(userExist._id), message: "logged in" } });
+  }
+};
+
+const genJWT = (id) => {
+  return jwt.sign({ id }, process.env.TROPAPP_SECRET, { expiresIn: "30d" });
 };
 
 module.exports = { createAccount, loginAccount };

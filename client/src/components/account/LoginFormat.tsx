@@ -1,11 +1,18 @@
 import React from "react";
 import Auth from "../features/Auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginFormat = (props: any) => {
+  const navigate = useNavigate();
+
   const onLogin = async (e: any) => {
     e.preventDefault();
     const loginAccount = await Auth.loginAccount(props.loginInput);
-    console.log(loginAccount);
+    if (loginAccount.data.res.message === "logged in") {
+      localStorage.setItem("tropApp", loginAccount.data.res.token);
+      props.setAuth(loginAccount.data.res.token);
+      navigate("/home");
+    }
   };
 
   return (

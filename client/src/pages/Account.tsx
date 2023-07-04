@@ -2,7 +2,7 @@ import React from "react";
 import LoginFormat from "../components/account/LoginFormat";
 import RegisterFormat from "../components/account/RegisterFormat";
 
-const Account = () => {
+const Account = (props: any) => {
   const [hasAccount, setHasAccount] = React.useState(false);
   const [registerInput, setRegisterInput] = React.useState({
     firstname: "",
@@ -51,6 +51,7 @@ const Account = () => {
             <div className="h-5/6 w-5/6">
               {hasAccount ? (
                 <LoginFormat
+                  setAuth={props.setAuth}
                   loginInput={loginInput}
                   setLoginInput={setLoginInput}
                 />
