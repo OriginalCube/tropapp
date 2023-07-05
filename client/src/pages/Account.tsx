@@ -1,6 +1,8 @@
 import React from "react";
 import LoginFormat from "../components/account/LoginFormat";
 import RegisterFormat from "../components/account/RegisterFormat";
+import { useNavigate } from "react-router-dom";
+import Auth from "../components/features/Auth";
 
 const Account = (props: any) => {
   const [hasAccount, setHasAccount] = React.useState(false);
@@ -18,6 +20,22 @@ const Account = (props: any) => {
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+
+  const authCheck = async () => {
+    const getAuth = await Auth.getAuth();
+    if (getAuth) {
+      props.setLoggedIn(true);
+      navigate("/home");
+    } else {
+      props.setLoggedIn(false);
+    }
+  };
+
+  React.useEffect(() => {
+    authCheck();
+  }, []);
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
@@ -51,7 +69,7 @@ const Account = (props: any) => {
             <div className="h-5/6 w-5/6">
               {hasAccount ? (
                 <LoginFormat
-                  setAuth={props.setAuth}
+                  setLoggedIn={props.setLoggedIn}
                   loginInput={loginInput}
                   setLoginInput={setLoginInput}
                 />

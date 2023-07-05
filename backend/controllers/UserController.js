@@ -47,8 +47,17 @@ const loginAccount = async (req, res) => {
   }
 };
 
+const getUserDetails = async (req, res) => {
+  const userData = await UserModel.findById(req.user._id);
+  if (!userData) {
+    res.json({ message: "No id recieved." });
+  } else {
+    res.json({ res: { userData, message: "Id recieved and user found." } });
+  }
+};
+
 const genJWT = (id) => {
   return jwt.sign({ id }, process.env.TROPAPP_SECRET, { expiresIn: "30d" });
 };
 
-module.exports = { createAccount, loginAccount };
+module.exports = { createAccount, loginAccount, getUserDetails };

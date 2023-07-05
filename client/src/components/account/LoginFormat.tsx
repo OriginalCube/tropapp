@@ -10,7 +10,7 @@ const LoginFormat = (props: any) => {
     const loginAccount = await Auth.loginAccount(props.loginInput);
     if (loginAccount.data.res.message === "logged in") {
       localStorage.setItem("tropApp", loginAccount.data.res.token);
-      props.setAuth(loginAccount.data.res.token);
+      props.setLoggedIn(true);
       navigate("/home");
     }
   };

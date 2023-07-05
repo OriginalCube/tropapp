@@ -7,6 +7,17 @@ const checkCon = async () => {
   return getData.data;
 };
 
+const getAuth = async () => {
+  const getData = await axios.get(api_url + "/user/auth", {
+    headers: { authorization: `Bearer ${localStorage.getItem("tropApp")}` },
+  });
+  if (getData.status === 200) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const registerAccount = async (data) => {
   const createAccount = await axios.post(api_url + "/user/register", data);
   console.log(createAccount);
@@ -18,6 +29,6 @@ const loginAccount = async (data) => {
   return loginAccount;
 };
 
-const Auth = { checkCon, registerAccount, loginAccount };
+const Auth = { checkCon, registerAccount, loginAccount, getAuth };
 
 export default Auth;
