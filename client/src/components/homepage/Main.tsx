@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "./TextField";
 import Auth from "../features/Auth";
 import Post from "../features/Post";
+import Feed from "./Feed";
 
 const Main = () => {
   const [userDetails, setUserDetails] = React.useState({
@@ -13,16 +14,16 @@ const Main = () => {
     lastname: "",
     birthday: "",
   });
+  const [posts, setPosts] = React.useState([]);
 
   const getUserDetails = async () => {
     const getData = await Auth.getUserDetails();
-    console.log(getData);
     setUserDetails(getData);
   };
 
   const getUserPost = async () => {
     const getOwnPost = await Post.getUserPost();
-    console.log(getOwnPost);
+    setPosts(getOwnPost.data);
   };
 
   React.useEffect(() => {
@@ -30,9 +31,20 @@ const Main = () => {
     getUserPost();
   }, []);
 
+  React.useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+
   return (
-    <div className="w-full h-auto mt-24">
+    <div className="w-full h-auto mt-24 flex-col">
       <TextField userDetails={userDetails} />
+      {posts.length > 0 ? (
+        <div className="h-auto w-5/6 flex-col items-center justify-center shadow-md rounded-md mt-16 bg-white">
+          {posts.map((e, index) => (
+            <Feed key={index} author={e.user} post={e.post} />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };

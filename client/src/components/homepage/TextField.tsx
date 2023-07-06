@@ -5,7 +5,7 @@ const TextField = (props: any) => {
   const [post, setPost] = React.useState("");
 
   const onSubmit = async () => {
-    if (post === "") {
+    if (post !== "") {
       const createPost = await Post.createPost(post);
       console.log(createPost);
       setPost("");

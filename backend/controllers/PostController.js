@@ -1,13 +1,17 @@
 const Post = require("../models/PostModel");
 
 const createPost = async (req, res) => {
+  const { data } = req.body;
   const uploadPost = await Post.create({
-    id: req.user.id,
-    post: req.body.res,
+    user: req.user._id,
+    post: data,
   });
 
-  console.log(uploadPost);
-  res.send(req.body);
+  if (uploadPost) {
+    res.status(200).json({ message: "Successfully uploaded..." });
+  } else {
+    res.status(401).json({ message: "Error in uploading..." });
+  }
 };
 
 const getUserPost = async (req, res) => {

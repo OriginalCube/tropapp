@@ -6,12 +6,13 @@ const userKey = localStorage.getItem("tropApp");
 const createPost = async (data) => {
   const uploadPost = await axios.post(
     api_url + "/post/create",
-    { res: data },
+    { data },
     {
       headers: { authorization: `Bearer ${userKey}` },
     }
   );
   console.log(uploadPost);
+  console.log("clicked");
 };
 
 const getUserPost = async (req, res) => {
