@@ -47,7 +47,7 @@ const loginAccount = async (req, res) => {
   }
 };
 
-const getUserDetails = async (req, res) => {
+const getAuth = async (req, res) => {
   const userData = await UserModel.findById(req.user._id);
   if (!userData) {
     res.json({ message: "No id recieved." });
@@ -56,8 +56,27 @@ const getUserDetails = async (req, res) => {
   }
 };
 
+const getUserDetails = async (req, res) => {
+  const userData = await UserModel.findById(req.user._id);
+
+  if (userData) {
+    const userDetails = {
+      username: userData.username,
+      id: userData.id,
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      picture: userData.picture,
+      email: userData.picture,
+      birthday: userData.birthday,
+    };
+    res.status(200).json(userDetails);
+  } else {
+    res.status(401).json({ message: "Error retrieving data." });
+  }
+};
+
 const genJWT = (id) => {
   return jwt.sign({ id }, process.env.TROPAPP_SECRET, { expiresIn: "30d" });
 };
 
-module.exports = { createAccount, loginAccount, getUserDetails };
+module.exports = { createAccount, loginAccount, getAuth, getUserDetails };

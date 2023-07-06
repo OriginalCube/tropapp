@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   createAccount,
   loginAccount,
+  getAuth,
   getUserDetails,
 } = require("../controllers/UserController");
 
@@ -12,6 +13,8 @@ router.post("/register", createAccount);
 
 router.post("/login", loginAccount);
 
-router.get("/auth", protect, getUserDetails);
+router.get("/auth", protect, getAuth);
+
+router.get("/userData", protect, getUserDetails);
 
 module.exports = router;

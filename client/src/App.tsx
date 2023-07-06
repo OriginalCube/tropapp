@@ -18,21 +18,21 @@ function App() {
   }, [loggedIn]);
 
   return (
-    <div className="h-full w-full flex">
-      {loggedIn ? (
-        <div className="w-1/6 bg-gray-800">
-          <Navigation />
-        </div>
-      ) : null}
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="h-full w-full flex">
+        {loggedIn ? (
+          <div className="w-1/6 h-full">
+            <Navigation />
+          </div>
+        ) : null}
         <div className={`${loggedIn ? "w-5/6" : "w-full"} bg-gray-200 h-full`}>
           <Routes>
             <Route index element={<Account setLoggedIn={setLoggedIn} />} />
             <Route path="home" element={<Homepage loggedIn={loggedIn} />} />
           </Routes>{" "}
         </div>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

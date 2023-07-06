@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const api_url = "/api/v1";
+const userKey = localStorage.getItem("tropApp");
 
 const checkCon = async () => {
   const getData = await axios.get(api_url);
@@ -9,7 +10,7 @@ const checkCon = async () => {
 
 const getAuth = async () => {
   const getData = await axios.get(api_url + "/user/auth", {
-    headers: { authorization: `Bearer ${localStorage.getItem("tropApp")}` },
+    headers: { authorization: `Bearer ${userKey}` },
   });
   if (getData.status === 200) {
     return true;
@@ -29,6 +30,23 @@ const loginAccount = async (data) => {
   return loginAccount;
 };
 
-const Auth = { checkCon, registerAccount, loginAccount, getAuth };
+const getUserDetails = async () => {
+  const getData = await axios.get(api_url + "/user/userData", {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  if (getData) {
+    return getData.data;
+  } else {
+    console.log(getData.data.message);
+  }
+};
+
+const Auth = {
+  checkCon,
+  registerAccount,
+  loginAccount,
+  getAuth,
+  getUserDetails,
+};
 
 export default Auth;
