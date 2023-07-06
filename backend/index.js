@@ -15,6 +15,8 @@ connectDb();
 
 app.use(api_url + "/user", require("./routes/User"));
 
+app.use(api_url + "/post", require("./routes/Post"));
+
 const mainServer = app.listen(PORT, () =>
   console.log(`listening on port : ${PORT}`)
 );
