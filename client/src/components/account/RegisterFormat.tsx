@@ -21,6 +21,9 @@ const RegisterFormat = (props: any) => {
     e.preventDefault();
     const register = await Auth.registerAccount(props.registerInput);
     console.log(register);
+    if (register.status === 201) {
+      props.setHasAccount(true);
+    }
   };
 
   return (

@@ -11,8 +11,7 @@ const createPost = async (data) => {
       headers: { authorization: `Bearer ${userKey}` },
     }
   );
-  console.log(uploadPost);
-  console.log("clicked");
+  return uploadPost;
 };
 
 const getUserPost = async () => {
@@ -32,6 +31,13 @@ const updatePost = async (body) => {
   return updatingPost;
 };
 
-const Post = { createPost, getUserPost, updatePost };
+const deletePost = async (id) => {
+  const deletingPost = await axios.delete(api_url + `/post/delete/${id}`, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  return deletingPost;
+};
+
+const Post = { createPost, getUserPost, updatePost, deletePost };
 
 export default Post;

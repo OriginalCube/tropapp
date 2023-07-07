@@ -16,7 +16,6 @@ const createPost = async (req, res) => {
 
 const getUserPost = async (req, res) => {
   const getOwnPost = await Post.find({ user: req.user._id });
-  console.log(getOwnPost);
   if (getOwnPost) {
     res.status(200).json(getOwnPost);
   } else {
@@ -39,7 +38,7 @@ const updatePost = async (req, res) => {
     { post: post },
     { new: true }
   );
-  console.log(updatingPost);
+
   if (updatingPost) {
     res.status(200).json({ message: "Succesfully Updated..." });
   } else {
@@ -47,4 +46,19 @@ const updatePost = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getUserPost, updatePost };
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+
+  const isExist = await Post.findById(id);
+
+  console.log(isExist);
+
+  if (!isExist) {
+    res.status(401).json({ message: "Post does not exist!" });
+  }
+
+  await isExist.deleteOne();
+  res.status(200).json({ message: "Sucessfully deleted..." });
+};
+
+module.exports = { createPost, getUserPost, updatePost, deletePost };

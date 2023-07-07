@@ -5,6 +5,7 @@ const {
   createPost,
   getUserPost,
   updatePost,
+  deletePost,
 } = require("../controllers/PostController");
 
 router.post("/create", protect, createPost);
@@ -12,5 +13,7 @@ router.post("/create", protect, createPost);
 router.get("/user", protect, getUserPost);
 
 router.put("/update/:id", protect, updatePost);
+
+router.delete("/delete/:id", protect, deletePost);
 
 module.exports = router;

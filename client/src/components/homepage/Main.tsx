@@ -37,7 +37,7 @@ const Main = () => {
 
   return (
     <div className="w-full h-auto mt-24 flex-col">
-      <TextField userDetails={userDetails} />
+      <TextField userDetails={userDetails} getUserPost={getUserPost} />
       {posts.length > 0 ? (
         <div className="h-auto w-5/6 flex-col items-center justify-center shadow-md rounded-md mt-16 bg-white mb-10">
           {posts.map((e, index) => (

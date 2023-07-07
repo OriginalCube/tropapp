@@ -76,6 +76,7 @@ const Account = (props: any) => {
               ) : (
                 <RegisterFormat
                   registerInput={registerInput}
+                  setHasAccount={setHasAccount}
                   setRegisterInput={setRegisterInput}
                 />
               )}

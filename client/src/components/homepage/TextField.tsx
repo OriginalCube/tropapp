@@ -7,7 +7,9 @@ const TextField = (props: any) => {
   const onSubmit = async () => {
     if (post !== "") {
       const createPost = await Post.createPost(post);
-      console.log(createPost);
+      if (createPost.status === 200) {
+        props.getUserPost();
+      }
       setPost("");
     }
   };

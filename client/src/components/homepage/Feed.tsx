@@ -20,13 +20,31 @@ const Feed = (props: any) => {
     if (!isUpdating) {
       setIsUpdating(true);
     } else {
-      const updatingPost = await Post.updatePost({
-        data: { post: post, id: props.id },
-      });
-      if (updatingPost.status === 200) {
-        setIsUpdating(false);
+      if (post.length > 0 && post !== props.psot) {
+        const updatingPost = await Post.updatePost({
+          data: { post: post, id: props.id },
+        });
+        if (updatingPost.status === 200) {
+          props.getUserPost();
+        }
+        setErrMessage("");
+      } else {
+        setErrMessage("Invalid post material");
+      }
+      setIsUpdating(false);
+    }
+  };
+
+  const onDelete = async () => {
+    if (!isRemoving) {
+      setIsRemoving(true);
+      setErrMessage("Are you sure");
+    } else {
+      const deletePost = await Post.deletePost(props.id);
+      if (deletePost.status === 200) {
         props.getUserPost();
       }
+      setErrMessage("");
     }
   };
 
@@ -63,7 +81,8 @@ const Feed = (props: any) => {
               <span className="font-medium"> #{userDetails.id} </span>
             </p>{" "}
             {!isAuthor ? (
-              <div className="w-1/2 h-auto flex justify-end">
+              <div className="w-1/2 h-auto flex items-center justify-end">
+                <p className="font-medium text-red-500">{errMessage}</p>
                 <div className="flex w-1/4 justify-evenly">
                   <img
                     onClick={onUpdate}
@@ -72,6 +91,7 @@ const Feed = (props: any) => {
                     alt=""
                   />
                   <img
+                    onClick={onDelete}
                     className="h-4 w-auto cursor-pointer"
                     src="./assets/icons/remove.png"
                     alt=""
