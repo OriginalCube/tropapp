@@ -16,7 +16,7 @@ const TextField = (props: any) => {
   }, [search]);
 
   return (
-    <div className="w-5/6 h-24 bg-white rounded-2xl shadow-md flex items-center justify-center">
+    <div className="w-full h-24 bg-white rounded-2xl shadow-md flex items-center justify-center">
       <div
         className="h-full flex items-center justify-center"
         style={{ width: "10%" }}

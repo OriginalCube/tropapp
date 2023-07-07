@@ -17,8 +17,8 @@ const Search = (props: any) => {
   }, []);
 
   return (
-    <div className="h-auto flex m-auto" style={{ width: "95%" }}>
-      <div className="h-auto w-5/6">
+    <div className="h-auto flex m-auto border-2" style={{ width: "95%" }}>
+      <div className="h-auto w-5/6 flex items-center justify-center">
         <Main />
       </div>
       <div className="h-auto w-1/6"></div>

@@ -65,7 +65,7 @@ const Feed = (props: any) => {
   return (
     <div className="w-full h-full flex p-2">
       <div className="w-1/6 h-36 flex items-center justify-center">
-        <div className="h-auto w-2/3 m-auto flex items-center justify-center">
+        <div className="h-auto w-3/5 m-auto flex items-center justify-center">
           <img
             src={`./assets/profile/${userDetails.picture}.webp`}
             className="w-full h-full rounded-full"

@@ -3,7 +3,7 @@ import UserHeader from "./UserHeader";
 
 const Main = () => {
   return (
-    <div className="w-full h-full">
+    <div className="w-5/6 h-auto mt-24">
       <UserHeader />
     </div>
   );

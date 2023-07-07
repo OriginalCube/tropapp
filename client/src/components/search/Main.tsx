@@ -46,7 +46,7 @@ const Main = () => {
   };
 
   return (
-    <div className="h-auto w-full flex-col mt-24">
+    <div className="h-auto w-5/6 flex-col mt-24 ">
       <TextField userDetails={userDetails} setUsers={setUsers} />
       <div className="mt-16 w-5/6 h-auto flex items-center justify-center">
         <div className="h-auto w-full flex-col bg-white shadow-md rounded-md overflow-hidden">
