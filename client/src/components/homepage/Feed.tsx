@@ -102,7 +102,7 @@ const Feed = (props: any) => {
           </div>
           {isUpdating ? (
             <textarea
-              className="text-xl justify-center outline-none border-blue-400 border-2 text-justify"
+              className="text-xl justify-center outline-none border-blue-400 border-2 text-justify p-4 rounded-md"
               rows={5}
               cols={10}
               value={post}

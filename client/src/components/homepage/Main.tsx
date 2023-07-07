@@ -31,10 +31,6 @@ const Main = () => {
     getUserPost();
   }, []);
 
-  React.useEffect(() => {
-    console.log(posts);
-  }, [posts]);
-
   return (
     <div className="w-full h-auto mt-24 flex-col">
       <TextField userDetails={userDetails} getUserPost={getUserPost} />

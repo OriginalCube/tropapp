@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Account from "./pages/Account";
 import Homepage from "./pages/Homepage";
 import Navigation from "./pages/Navigation";
+import Search from "./pages/Search";
+import User from "./pages/User";
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -29,6 +31,11 @@ function App() {
           <Routes>
             <Route index element={<Account setLoggedIn={setLoggedIn} />} />
             <Route path="home" element={<Homepage loggedIn={loggedIn} />} />
+            <Route
+              path="search"
+              element={<Search setLoggedIn={setLoggedIn} />}
+            />
+            <Route path="/:id" element={<User setLoggedIn={setLoggedIn} />} />
           </Routes>{" "}
         </div>
       </div>

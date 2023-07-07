@@ -7,8 +7,6 @@ const createAccount = async (req, res) => {
     req.body;
   const userExist = await UserModel.find({ username: username });
 
-  console.log(userExist.length !== 0);
-
   if (userExist.length !== 0) {
     res.status(401).json({ message: "Error: Email is already in use." });
   } else {
@@ -92,6 +90,25 @@ const getUserInfo = async (req, res) => {
   }
 };
 
+const getMultipleUsers = async (req, res) => {
+  const { id } = req.params;
+  const usersData = await UserModel.find({ username: { $regex: id } });
+  let arr = [];
+  if (usersData.length > 0) {
+    usersData.forEach((element) => {
+      const createUser = {
+        username: element.username,
+        id: element.id,
+        picture: element.picture,
+      };
+      arr.push(createUser);
+    });
+    res.status(200).json(arr);
+  } else {
+    res.status(401).json({ message: "No users found..." });
+  }
+};
+
 const genJWT = (id) => {
   return jwt.sign({ id }, process.env.TROPAPP_SECRET, { expiresIn: "30d" });
 };
@@ -102,4 +119,5 @@ module.exports = {
   getAuth,
   getUserDetails,
   getUserInfo,
+  getMultipleUsers,
 };
