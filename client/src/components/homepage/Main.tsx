@@ -39,9 +39,15 @@ const Main = () => {
     <div className="w-full h-auto mt-24 flex-col">
       <TextField userDetails={userDetails} />
       {posts.length > 0 ? (
-        <div className="h-auto w-5/6 flex-col items-center justify-center shadow-md rounded-md mt-16 bg-white">
+        <div className="h-auto w-5/6 flex-col items-center justify-center shadow-md rounded-md mt-16 bg-white mb-10">
           {posts.map((e, index) => (
-            <Feed key={index} author={e.user} post={e.post} />
+            <Feed
+              key={index}
+              author={e.user}
+              post={e.post}
+              id={e._id}
+              getUserPost={getUserPost}
+            />
           ))}
         </div>
       ) : null}

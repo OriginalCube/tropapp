@@ -15,13 +15,23 @@ const createPost = async (data) => {
   console.log("clicked");
 };
 
-const getUserPost = async (req, res) => {
+const getUserPost = async () => {
   const getOwnPost = await axios.get(api_url + "/post/user", {
     headers: { authorization: `Bearer ${userKey}` },
   });
   return getOwnPost;
 };
 
-const Post = { createPost, getUserPost };
+const updatePost = async (body) => {
+  const { post, id } = body.data;
+  const updatingPost = await axios.put(
+    api_url + `/post/update/${id}`,
+    { post },
+    { headers: { authorization: `Bearer ${userKey}` } }
+  );
+  return updatingPost;
+};
+
+const Post = { createPost, getUserPost, updatePost };
 
 export default Post;

@@ -47,6 +47,7 @@ const Auth = {
   loginAccount,
   getAuth,
   getUserDetails,
+  userKey,
 };
 
 export default Auth;

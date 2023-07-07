@@ -24,4 +24,27 @@ const getUserPost = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getUserPost };
+const updatePost = async (req, res) => {
+  const { post } = req.body;
+  const { id } = req.params;
+
+  const isExist = await Post.findById(id);
+
+  if (!isExist) {
+    res.status(401).json({ message: "Post does not exist." });
+  }
+
+  const updatingPost = await Post.findByIdAndUpdate(
+    id,
+    { post: post },
+    { new: true }
+  );
+  console.log(updatingPost);
+  if (updatingPost) {
+    res.status(200).json({ message: "Succesfully Updated..." });
+  } else {
+    res.status(401).json({ message: "Unsucessfully Updated..." });
+  }
+};
+
+module.exports = { createPost, getUserPost, updatePost };
