@@ -21,6 +21,16 @@ const getUsers = async (body) => {
   }
 };
 
-const User = { getUserData, getUsers };
+const getUser = async (body) => {
+  const GetUser = await axios.get(api_url + `/user/info/${body.id}`, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+
+  if (GetUser) {
+    return GetUser.data;
+  }
+};
+
+const User = { getUserData, getUsers, getUser };
 
 export default User;

@@ -76,7 +76,8 @@ const getUserDetails = async (req, res) => {
 
 const getUserInfo = async (req, res) => {
   const { id } = req.params;
-  const userData = await UserModel.findById(id);
+  const userData = await UserModel.findOne({ username: id });
+  console.log(userData);
 
   if (userData) {
     const userDetails = {
