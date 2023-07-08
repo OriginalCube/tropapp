@@ -48,11 +48,6 @@ const Feed = (props: any) => {
     }
   };
 
-  const getUserInfo = async () => {
-    const getData = await User.getUserData(props.author);
-    setUserDetails(getData.data);
-  };
-
   const checkAuthor = async () => {
     if (props.author === (await Auth.getKey())) {
       setIsAuthor(true);
@@ -62,9 +57,12 @@ const Feed = (props: any) => {
   };
 
   React.useEffect(() => {
-    getUserInfo();
     checkAuthor();
   }, [props.user]);
+
+  React.useEffect(() => {
+    setUserDetails(props.userDetails);
+  }, [props.userDetails]);
 
   return (
     <div className="w-full h-full flex p-2">

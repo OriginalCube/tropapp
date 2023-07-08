@@ -19,6 +19,15 @@ const getAuth = async () => {
   }
 };
 
+const getKey = async () => {
+  const GetKey = await axios.get(api_url + "/user/key", {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  if (GetKey) {
+    return GetKey.data._id;
+  }
+};
+
 const registerAccount = async (data) => {
   const createAccount = await axios.post(api_url + "/user/register", data);
   return createAccount;
@@ -46,6 +55,7 @@ const Auth = {
   loginAccount,
   getAuth,
   getUserDetails,
+  getKey,
   userKey,
 };
 

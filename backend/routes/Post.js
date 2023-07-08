@@ -6,11 +6,14 @@ const {
   getUserPost,
   updatePost,
   deletePost,
+  getPost,
 } = require("../controllers/PostController");
 
 router.post("/create", protect, createPost);
 
 router.get("/user", protect, getUserPost);
+
+router.get("/user/:id", protect, getPost);
 
 router.put("/update/:id", protect, updatePost);
 

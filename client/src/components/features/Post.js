@@ -18,7 +18,19 @@ const getUserPost = async () => {
   const getOwnPost = await axios.get(api_url + "/post/user", {
     headers: { authorization: `Bearer ${userKey}` },
   });
-  return getOwnPost;
+  if (getOwnPost) {
+    return getOwnPost;
+  }
+};
+
+const getPost = async (id) => {
+  const getPost = await axios.get(api_url + `/post/user/${id}`, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+
+  if (getPost) {
+    return getPost.data;
+  }
 };
 
 const updatePost = async (body) => {
@@ -38,6 +50,6 @@ const deletePost = async (id) => {
   return deletingPost;
 };
 
-const Post = { createPost, getUserPost, updatePost, deletePost };
+const Post = { createPost, getUserPost, updatePost, deletePost, getPost };
 
 export default Post;

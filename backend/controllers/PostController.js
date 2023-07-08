@@ -1,4 +1,5 @@
 const Post = require("../models/PostModel");
+const User = require("../models/UserModel");
 
 const createPost = async (req, res) => {
   const { data } = req.body;
@@ -20,6 +21,31 @@ const getUserPost = async (req, res) => {
     res.status(200).json(getOwnPost);
   } else {
     res.status(401).json({ message: "Recieved successfully." });
+  }
+};
+
+const getPost = async (req, res) => {
+  const { id } = req.params;
+  const GetUser = await User.findOne({ username: id });
+  let postInfo = [];
+
+  if (!GetUser) {
+    res.status(401).json({ message: "No Users found..." });
+  } else {
+    const GetPost = await Post.find({ user: GetUser._id });
+    if (!GetPost) {
+      res.status(401).json({ message: "No Posts found..." });
+    } else {
+      GetPost.forEach((element) => {
+        const createPost = {
+          author: element.user,
+          post: element.post,
+          date: element.createdAt,
+        };
+        postInfo.push(createPost);
+      });
+      res.status(200).json(postInfo);
+    }
   }
 };
 
@@ -61,4 +87,4 @@ const deletePost = async (req, res) => {
   res.status(200).json({ message: "Sucessfully deleted..." });
 };
 
-module.exports = { createPost, getUserPost, updatePost, deletePost };
+module.exports = { createPost, getUserPost, getPost, updatePost, deletePost };

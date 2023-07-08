@@ -8,6 +8,7 @@ const {
   getUserInfo,
   getMultipleUsers,
   getInfo,
+  getKey,
 } = require("../controllers/UserController");
 
 const { protect } = require("../middlewares/AuthMiddleware");
@@ -25,5 +26,7 @@ router.get("/info/:id", protect, getUserInfo);
 router.get("/accounts/:id", protect, getMultipleUsers);
 
 router.get("/account/:id", protect, getInfo);
+
+router.get("/key", protect, getKey);
 
 module.exports = router;

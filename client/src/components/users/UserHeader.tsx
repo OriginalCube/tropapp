@@ -15,6 +15,17 @@ const UserHeader = (props: any) => {
           />
         </div>
       </div>
+      <div
+        className="h-full flex items-center justify-center"
+        style={{ width: "88%" }}
+      >
+        <p className="w-1/2 h-auto text-2xl font-semibold pl-6 text-left">
+          {props.userDetails.username}
+        </p>
+        <p className="w-1/2 h-auto text-xl font-medium text-right pr-6 cursor-pointer hover:text-sky-500">
+          Follow
+        </p>
+      </div>
     </div>
   );
 };
