@@ -21,13 +21,15 @@ const getUsers = async (body) => {
   }
 };
 
-const getUser = async (body) => {
-  const GetUser = await axios.get(api_url + `/user/info/${body.id}`, {
-    headers: { authorization: `Bearer ${userKey}` },
-  });
+const getUser = async (id) => {
+  if (id.length > 0) {
+    const GetUsers = await axios.get(api_url + `/user/account/${id}`, {
+      headers: { authorization: `Bearer ${userKey}` },
+    });
 
-  if (GetUser) {
-    return GetUser.data;
+    if (GetUsers) {
+      return GetUsers.data;
+    }
   }
 };
 

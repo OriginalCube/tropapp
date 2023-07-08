@@ -5,12 +5,13 @@ import Main from "../components/users/Main";
 import user from "../components/features/User";
 
 const User = (props: any) => {
-  const id = useParams();
+  const { id } = useParams();
   const [userDetails, setUserDetails] = React.useState({
     username: "",
     picture: "",
     id: "",
   });
+
   const authCheck = async () => {
     const getAuth = await Auth.getAuth();
     if (getAuth) {
@@ -22,7 +23,6 @@ const User = (props: any) => {
 
   const getUserInfo = async () => {
     const getData = await user.getUser(id);
-    console.log(getData);
     setUserDetails(getData);
   };
 
