@@ -1,6 +1,11 @@
 import React from "react";
+import Follow from "../features/Follow";
 
 const UserHeader = (props: any) => {
+  const onFollow = async () => {
+    const isFollowing = await Follow.follow(props.id);
+  };
+
   return (
     <div className="w-full h-24 bg-white rounded-2xl shadow-md flex items-center justify-center">
       <div
@@ -22,7 +27,10 @@ const UserHeader = (props: any) => {
         <p className="w-1/2 h-auto text-2xl font-semibold pl-6 text-left">
           {props.userDetails.username}
         </p>
-        <p className="w-1/2 h-auto text-xl font-medium text-right pr-6 cursor-pointer hover:text-sky-500">
+        <p
+          onClick={onFollow}
+          className="w-1/2 h-auto text-xl font-medium text-right pr-6 cursor-pointer hover:text-sky-500"
+        >
           Follow
         </p>
       </div>
