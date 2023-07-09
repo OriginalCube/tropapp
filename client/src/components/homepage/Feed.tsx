@@ -9,7 +9,7 @@ const Feed = (props: any) => {
     picture: "",
     id: "",
   });
-
+  const date = new Date(props.date);
   const [post, setPost] = React.useState(props.post);
   const [isAuthor, setIsAuthor] = React.useState(false);
   const [isUpdating, setIsUpdating] = React.useState(false);
@@ -64,7 +64,7 @@ const Feed = (props: any) => {
   React.useEffect(() => {
     getUserInfo();
     checkAuthor();
-  }, [props.user]);
+  }, [props.id]);
 
   return (
     <div className="w-full h-full flex p-2">
@@ -104,17 +104,25 @@ const Feed = (props: any) => {
               </div>
             ) : null}
           </div>
-          {isUpdating ? (
-            <textarea
-              className="text-xl justify-center outline-none border-blue-400 border-2 text-justify p-4 rounded-md"
-              rows={5}
-              cols={10}
-              value={post}
-              onChange={(e) => setPost(e.target.value)}
-            />
-          ) : (
-            <p className="text-xl justify-center">{props.post}</p>
-          )}
+          <div className="w-full h-auto">
+            {isUpdating ? (
+              <textarea
+                className="text-xl justify-center outline-none border-blue-400 border-2 text-justify p-4 rounded-md"
+                rows={5}
+                cols={10}
+                value={post}
+                onChange={(e) => setPost(e.target.value)}
+              />
+            ) : (
+              <p className="text-xl justify-center">{props.post}</p>
+            )}{" "}
+          </div>
+          <p className="font-light text-sm mt-2">
+            {date.getHours() + ":"}
+            {date.getMinutes() < 10
+              ? "0" + date.getMinutes()
+              : date.getMinutes()}
+          </p>
         </div>{" "}
       </div>
     </div>

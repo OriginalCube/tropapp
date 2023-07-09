@@ -22,8 +22,8 @@ const Main = () => {
   };
 
   const getUserPost = async () => {
-    const getOwnPost = await Post.getUserPost();
-    setPosts(getOwnPost.data);
+    const getOwnPost = await Post.getAllPost();
+    if (getOwnPost) setPosts(getOwnPost.data);
   };
 
   React.useEffect(() => {
@@ -39,9 +39,9 @@ const Main = () => {
           {posts.map((e, index) => (
             <Feed
               key={index}
-              author={e.user}
               post={e.post}
-              id={e._id}
+              date={e.date}
+              author={e.author}
               getUserPost={getUserPost}
             />
           ))}

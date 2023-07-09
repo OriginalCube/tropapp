@@ -1,5 +1,6 @@
 const Post = require("../models/PostModel");
 const User = require("../models/UserModel");
+const Follow = require("../models/FollowModel");
 
 const createPost = async (req, res) => {
   const { data } = req.body;
@@ -87,4 +88,37 @@ const deletePost = async (req, res) => {
   res.status(200).json({ message: "Sucessfully deleted..." });
 };
 
-module.exports = { createPost, getUserPost, getPost, updatePost, deletePost };
+const getAllPost = async (req, res) => {
+  const isFollowing = await Follow.findOne({ follower: req.user._id });
+  let postInfo = [];
+  try {
+    if (isFollowing.following) {
+      for (let i = 0; i < isFollowing.following.length; i++) {
+        const fetchPost = await Post.find({
+          user: isFollowing.following[i],
+        });
+        const fetchUserInfo = await User.findById(isFollowing.following[i]);
+        fetchPost.forEach((element) => {
+          const createPost = {
+            author: fetchUserInfo._id,
+            post: element.post,
+            date: new Date(element.createdAt),
+          };
+          postInfo.push(createPost);
+        });
+      }
+    }
+  } catch (err) {}
+
+  postInfo.sort((a, b) => a.date.getTime() - b.date.getTime());
+  res.status(200).json(postInfo.reverse());
+};
+
+module.exports = {
+  createPost,
+  getUserPost,
+  getPost,
+  updatePost,
+  deletePost,
+  getAllPost,
+};

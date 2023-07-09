@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import Navigation from "./pages/Navigation";
 import Search from "./pages/Search";
 import User from "./pages/User";
+import Profile from "./pages/Profile";
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -35,6 +36,7 @@ function App() {
               path="search"
               element={<Search setLoggedIn={setLoggedIn} />}
             />
+            <Route path="profile" element={<Profile loggedIn={loggedIn} />} />
             <Route path="/:id" element={<User setLoggedIn={setLoggedIn} />} />
           </Routes>{" "}
         </div>

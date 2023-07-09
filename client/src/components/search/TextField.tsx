@@ -39,13 +39,6 @@ const TextField = (props: any) => {
             placeholder="Find User!"
           />
         </div>
-        <button
-          onClick={() => console.log()}
-          className="float-right m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 p-2 w-20 rounded-md"
-        >
-          Post
-        </button>
       </div>
     </div>
   );

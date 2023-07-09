@@ -50,6 +50,20 @@ const deletePost = async (id) => {
   return deletingPost;
 };
 
-const Post = { createPost, getUserPost, updatePost, deletePost, getPost };
+const getAllPost = async () => {
+  const GetPost = await axios.get(api_url + `/post/all`, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  return GetPost;
+};
+
+const Post = {
+  createPost,
+  getUserPost,
+  updatePost,
+  deletePost,
+  getPost,
+  getAllPost,
+};
 
 export default Post;
