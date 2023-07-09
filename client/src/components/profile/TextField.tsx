@@ -1,8 +1,10 @@
 import React from "react";
 import Post from "../features/Post";
+import { useNavigate } from "react-router-dom";
 
 const TextField = (props: any) => {
   const [post, setPost] = React.useState("");
+  const navigate = useNavigate();
 
   const onSubmit = async () => {
     if (post !== "") {
@@ -12,6 +14,15 @@ const TextField = (props: any) => {
       }
       setPost("");
     }
+  };
+
+  const onLogout = () => {
+    localStorage.removeItem("tropApp");
+    navigate("/"); //find better way to stay off
+  };
+
+  const onEdit = () => {
+    props.setEdit(!props.edit);
   };
 
   return (
@@ -43,14 +54,21 @@ const TextField = (props: any) => {
             className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
         bg-blue-400 border-2 p-2 w-20 rounded-md"
           >
-            Edit
+            Post
           </button>
           <button
-            onClick={onSubmit}
+            onClick={onEdit}
             className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
         bg-blue-400 border-2 p-2 w-20 rounded-md"
           >
-            Post
+            {props.edit ? "Save" : "Edit"}
+          </button>
+          <button
+            onClick={onLogout}
+            className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 p-2 w-20 rounded-md"
+          >
+            Logout
           </button>
         </div>
       </div>

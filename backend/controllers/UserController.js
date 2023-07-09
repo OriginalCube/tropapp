@@ -76,7 +76,7 @@ const getUserDetails = async (req, res) => {
       firstname: userData.firstname,
       lastname: userData.lastname,
       picture: userData.picture,
-      email: userData.picture,
+      email: userData.email,
       birthday: userData.birthday,
     };
     res.status(200).json(userDetails);

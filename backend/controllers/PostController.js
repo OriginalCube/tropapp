@@ -18,8 +18,17 @@ const createPost = async (req, res) => {
 
 const getUserPost = async (req, res) => {
   const getOwnPost = await Post.find({ user: req.user._id });
+  let postInfo = [];
   if (getOwnPost) {
-    res.status(200).json(getOwnPost);
+    getOwnPost.forEach((element) => {
+      const createPost = {
+        author: element.user,
+        post: element.post,
+        date: new Date(element.createdAt),
+      };
+      postInfo.push(createPost);
+    });
+    res.status(200).json(postInfo);
   } else {
     res.status(401).json({ message: "Recieved successfully." });
   }
