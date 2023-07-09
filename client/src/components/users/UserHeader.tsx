@@ -4,6 +4,7 @@ import Follow from "../features/Follow";
 const UserHeader = (props: any) => {
   const onFollow = async () => {
     const isFollowing = await Follow.follow(props.id);
+    if (isFollowing) props.getUserInfo();
   };
 
   return (
@@ -31,7 +32,7 @@ const UserHeader = (props: any) => {
           onClick={onFollow}
           className="w-1/2 h-auto text-xl font-medium text-right pr-6 cursor-pointer hover:text-sky-500"
         >
-          Follow
+          {props.userDetails.isFollowing ? "following" : "follow"}
         </p>
       </div>
     </div>

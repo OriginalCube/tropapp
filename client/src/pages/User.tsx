@@ -11,6 +11,7 @@ const User = (props: any) => {
     username: "",
     picture: "",
     id: "",
+    following: false,
   });
   const [posts, setPosts] = React.useState([]);
 
@@ -44,7 +45,12 @@ const User = (props: any) => {
   return (
     <div className="h-auto flex m-auto" style={{ width: "95%" }}>
       <div className="h-auto w-5/6 flex items-center justify-center">
-        <Main userDetails={userDetails} posts={posts} id={id} />
+        <Main
+          userDetails={userDetails}
+          posts={posts}
+          id={id}
+          getUserInfo={getUserInfo}
+        />
       </div>
       <div className="h-auto w-1/6"></div>
     </div>

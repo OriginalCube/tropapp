@@ -1,4 +1,5 @@
 const UserModel = require("../models/UserModel");
+const FollowModel = require("../models/FollowModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -103,11 +104,16 @@ const getUserInfo = async (req, res) => {
 const getInfo = async (req, res) => {
   const { id } = req.params;
   const userData = await UserModel.findOne({ username: id });
+  const isFollowing = await FollowModel.findOne({
+    follower: req.user._id,
+    following: userData._id,
+  });
   if (userData) {
     const userDetails = {
       username: userData.username,
       id: userData.id,
       picture: userData.picture,
+      isFollowing: isFollowing ? true : false,
     };
     res.status(200).json(userDetails);
   } else {

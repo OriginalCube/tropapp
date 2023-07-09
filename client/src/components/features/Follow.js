@@ -7,7 +7,7 @@ const follow = async (id) => {
   const Follow = await axios.get(api_url + `/follow/following/${id}`, {
     headers: { authorization: `Bearer ${userKey}` },
   });
-  console.log(Follow);
+  return Follow.data;
 };
 
 const Follow = { follow };
