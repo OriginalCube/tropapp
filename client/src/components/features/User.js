@@ -33,6 +33,14 @@ const getUser = async (id) => {
   }
 };
 
-const User = { getUserData, getUsers, getUser };
+const updateUser = async (body) => {
+  console.log(body);
+  const UpdateUser = await axios.post(api_url + "/user/update", body, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  console.log(UpdateUser);
+};
+
+const User = { getUserData, getUsers, getUser, updateUser };
 
 export default User;

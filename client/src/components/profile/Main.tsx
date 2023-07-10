@@ -22,6 +22,7 @@ const Main = (props: any) => {
         <div className="h-auto w-full flex-col items-start justify-center shadow-md rounded-md mt-16 bg-white mb-10">
           {props.posts.map((e: any, index: number) => (
             <Feed
+              id={e.id}
               key={index}
               post={e.post}
               date={e.date}

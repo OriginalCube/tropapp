@@ -22,6 +22,7 @@ const getUserPost = async (req, res) => {
   if (getOwnPost) {
     getOwnPost.forEach((element) => {
       const createPost = {
+        id: element._id,
         author: element.user,
         post: element.post,
         date: new Date(element.createdAt),
@@ -109,6 +110,7 @@ const getAllPost = async (req, res) => {
         const fetchUserInfo = await User.findById(isFollowing.following[i]);
         fetchPost.forEach((element) => {
           const createPost = {
+            id: element._id,
             author: fetchUserInfo._id,
             post: element.post,
             date: new Date(element.createdAt),

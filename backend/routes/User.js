@@ -9,6 +9,7 @@ const {
   getMultipleUsers,
   getInfo,
   getKey,
+  updateUser,
 } = require("../controllers/UserController");
 
 const { protect } = require("../middlewares/AuthMiddleware");
@@ -28,5 +29,7 @@ router.get("/accounts/:id", protect, getMultipleUsers);
 router.get("/account/:id", protect, getInfo);
 
 router.get("/key", protect, getKey);
+
+router.post("/update", protect, updateUser);
 
 module.exports = router;

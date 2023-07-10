@@ -61,7 +61,7 @@ const TextField = (props: any) => {
             className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
         bg-blue-400 border-2 p-2 w-20 rounded-md"
           >
-            {props.edit ? "Save" : "Edit"}
+            Edit
           </button>
           <button
             onClick={onLogout}

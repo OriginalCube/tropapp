@@ -6,14 +6,17 @@ const Navigation = () => {
     <div className="w-full h-full">
       <div className="w-1/6 h-screen fixed bg-white shadow-md flex items-center justify-center">
         <div className="h-5/6 w-5/6 flex-col">
-          <div className="h-16 w-full flex justify-center items-center">
-            <img
-              src="./assets/icons/logo.png"
-              className="h-full w-auto"
-              alt=""
-            />
-            <button className="h-full w-3/4 text-4xl">TropApp</button>
-          </div>
+          <Link to={"home"}>
+            {" "}
+            <div className="h-16 w-full flex justify-center items-center">
+              <img
+                src="./assets/icons/logo.png"
+                className="h-full w-auto"
+                alt=""
+              />
+              <button className="h-full w-3/4 text-4xl">TropApp</button>
+            </div>{" "}
+          </Link>
           <div className="h-80 w-full mt-10 flex-col">
             <Link to={"home"}>
               {" "}
