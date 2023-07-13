@@ -68,7 +68,6 @@ const getAuth = async (req, res) => {
 
 const getUserDetails = async (req, res) => {
   const userData = await UserModel.findById(req.user._id);
-
   if (userData) {
     const userDetails = {
       username: userData.username,
@@ -87,17 +86,20 @@ const getUserDetails = async (req, res) => {
 
 const getUserInfo = async (req, res) => {
   const { id } = req.params;
-  const userData = await UserModel.findById(id);
-
-  if (userData) {
-    const userDetails = {
-      username: userData.username,
-      id: userData.id,
-      picture: userData.picture,
-    };
-    res.status(200).json(userDetails);
-  } else {
-    res.status(401).json({ message: "Error retrieving data." });
+  try {
+    const userData = await UserModel.findById(id);
+    if (userData) {
+      const userDetails = {
+        username: userData.username,
+        id: userData.id,
+        picture: userData.picture,
+      };
+      res.status(200).json(userDetails);
+    } else {
+      res.status(401).json({ message: "Error retrieving data." });
+    }
+  } catch (err) {
+    console.log("User Credentials Error.");
   }
 };
 

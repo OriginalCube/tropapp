@@ -1,14 +1,17 @@
 import React from "react";
 import ChatLink from "../components/features/Chat";
+import Main from "../components/chat/Main";
 
 const Chat = (props: any) => {
   const [isJoined, setIsJoined] = React.useState(false);
   const [code, setCode] = React.useState("");
 
   const onJoin = () => {
-    setIsJoined(true);
-    const joinRoom = ChatLink.joinRoom();
-    console.log(joinRoom);
+    if (code.length > 3) {
+      setIsJoined(true);
+      const joinRoom = ChatLink.joinRoom(code);
+      console.log(joinRoom);
+    }
   };
 
   return (
@@ -24,11 +27,14 @@ const Chat = (props: any) => {
             <div className="h-1/2 w-full flex items-center justify-center">
               <input
                 type="text"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
                 className="w-1/2 p-2 text-xl outline-none border-2 border-gray-800 rounded-sm"
               />{" "}
             </div>
             <div className="h-auto w-full flex items-center justify-center mt-2">
               <button
+                onClick={onJoin}
                 className="border-2 border-gray-800 p-2 bg-gray-800 text-xl 
             text-white px-10 rounded-md hover:text-gray-800 hover:bg-white"
               >
@@ -37,7 +43,9 @@ const Chat = (props: any) => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <Main code={code} />
+      )}
     </div>
   );
 };
