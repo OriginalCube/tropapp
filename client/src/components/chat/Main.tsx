@@ -1,11 +1,9 @@
 import React from "react";
 import Chatbox from "./Chatbox";
 import Chat from "../features/Chat";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5000/");
 
 const Main = (props: any) => {
+  const { socket } = props;
   const [message, setMessage] = React.useState("");
   const [messageList, setMessageList] = React.useState([]);
 
@@ -19,9 +17,9 @@ const Main = (props: any) => {
   };
 
   React.useEffect(() => {
-    console.log(socket);
     socket.on("receive_message", (data: any) => {
-      console.log(data);
+      messageList.push(data);
+      setMessageList([...messageList]);
     });
   }, [socket]);
 

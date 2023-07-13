@@ -1,6 +1,9 @@
 import React from "react";
 import ChatLink from "../components/features/Chat";
 import Main from "../components/chat/Main";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:5000/");
 
 const Chat = (props: any) => {
   const [isJoined, setIsJoined] = React.useState(false);
@@ -9,8 +12,7 @@ const Chat = (props: any) => {
   const onJoin = () => {
     if (code.length > 3) {
       setIsJoined(true);
-      const joinRoom = ChatLink.joinRoom(code);
-      console.log(joinRoom);
+      socket.emit("join_room", code);
     }
   };
 
@@ -44,7 +46,7 @@ const Chat = (props: any) => {
           </div>
         </div>
       ) : (
-        <Main code={code} />
+        <Main code={code} socket={socket} />
       )}
     </div>
   );
