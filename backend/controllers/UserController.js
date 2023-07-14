@@ -156,6 +156,16 @@ const updateUser = async (req, res) => {
   }
 };
 
+const getUsername = async (req, res) => {
+  try {
+    const userInfo = await UserModel.findById(req.user._id);
+    console.log(userInfo);
+    res.status(200).json(userInfo.username);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const genJWT = (id) => {
   return jwt.sign({ id }, process.env.TROPAPP_SECRET, { expiresIn: "30d" });
 };
@@ -170,4 +180,5 @@ module.exports = {
   getKey,
   getMultipleUsers,
   updateUser,
+  getUsername,
 };

@@ -6,6 +6,7 @@ const Main = (props: any) => {
   const { socket } = props;
   const [message, setMessage] = React.useState("");
   const [messageList, setMessageList] = React.useState([]);
+  const [username, setUsername] = React.useState("");
 
   const onMessage = async () => {
     if (message.length > 0) {
@@ -23,6 +24,16 @@ const Main = (props: any) => {
     });
   }, [socket]);
 
+  const getUsername = async () => {
+    const name = await Chat.getAuthor();
+    console.log(name);
+    setUsername(name);
+  };
+
+  React.useEffect(() => {
+    getUsername();
+  }, []);
+
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="h-full w-full flex-col">
@@ -30,10 +41,11 @@ const Main = (props: any) => {
           {messageList.length > 0 ? (
             <div
               className="overflow-y-scroll m-auto"
-              style={{ height: "90vh", width: "90%" }}
+              style={{ height: "85vh", width: "90%" }}
             >
               {messageList.map((e: any, index: number) => (
                 <Chatbox
+                  u_id={username}
                   key={index}
                   picture={e.picture}
                   username={e.username}

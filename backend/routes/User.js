@@ -10,6 +10,7 @@ const {
   getInfo,
   getKey,
   updateUser,
+  getUsername,
 } = require("../controllers/UserController");
 
 const { protect } = require("../middlewares/AuthMiddleware");
@@ -31,5 +32,7 @@ router.get("/account/:id", protect, getInfo);
 router.get("/key", protect, getKey);
 
 router.post("/update", protect, updateUser);
+
+router.get("/username", protect, getUsername);
 
 module.exports = router;

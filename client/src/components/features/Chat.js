@@ -27,6 +27,13 @@ const createMessage = async (message, room) => {
   return data;
 };
 
-const Chat = { joinRoom, createMessage };
+const getAuthor = async () => {
+  const getUsername = await axios.get(api_url + `/user/username`, {
+    headers: { authorization: `Bearer ${userKey}` },
+  });
+  return getUsername.data;
+};
+
+const Chat = { joinRoom, createMessage, getAuthor };
 
 export default Chat;
