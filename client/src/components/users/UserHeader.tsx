@@ -1,5 +1,6 @@
 import React from "react";
 import Follow from "../features/Follow";
+import { Link } from "react-router-dom";
 
 const UserHeader = (props: any) => {
   const onFollow = async () => {
@@ -28,12 +29,19 @@ const UserHeader = (props: any) => {
         <p className="w-1/2 h-auto text-2xl font-semibold pl-6 text-left">
           {props.userDetails.username}
         </p>
-        <p
-          onClick={onFollow}
-          className="w-1/2 h-auto text-xl font-medium text-right pr-6 cursor-pointer hover:text-sky-500"
-        >
-          {props.userDetails.isFollowing ? "following" : "follow"}
-        </p>
+        <div className="w-1/2 text-right h-auto text-xl font-medium pr-6">
+          <div className="w-1/2 flex float-right ">
+            <Link to={`/chat/${props.username}`}>
+              <p className="w-1/2 cursor-pointer hover:text-sky-500">Message</p>
+            </Link>
+            <p
+              onClick={onFollow}
+              className="w-1/2 cursor-pointer  h-auto hover:text-sky-500"
+            >
+              {props.userDetails.isFollowing ? "Following" : "Follow"}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

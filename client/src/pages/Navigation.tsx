@@ -10,7 +10,7 @@ const Navigation = () => {
             {" "}
             <div className="h-16 w-full flex justify-center items-center">
               <img
-                src="./assets/icons/logo.png"
+                src="/assets/icons/logo.png"
                 className="h-full w-auto"
                 alt=""
               />
@@ -22,7 +22,7 @@ const Navigation = () => {
               {" "}
               <div className="h-1/6 w-full flex items-center justify-start cursor-pointer hover:bg-sky-200 rounded-md hover:shadow-md">
                 <img
-                  src="./assets/icons/home.png"
+                  src="/assets/icons/home.png"
                   className="h-12 w-auto"
                   alt=""
                 />
@@ -34,7 +34,7 @@ const Navigation = () => {
             <Link to={"search"}>
               <div className="h-1/6 w-full flex items-center justify-start cursor-pointer hover:bg-sky-200 rounded-md hover:shadow-md">
                 <img
-                  src="./assets/icons/search.png"
+                  src="/assets/icons/search.png"
                   className="h-12 w-auto p-2"
                   alt=""
                 />
@@ -46,7 +46,7 @@ const Navigation = () => {
             <Link to={"profile"}>
               <div className="h-1/6 w-full flex items-center justify-start cursor-pointer hover:bg-sky-200 rounded-md hover:shadow-md">
                 <img
-                  src="./assets/icons/profile.png"
+                  src="/assets/icons/profile.png"
                   className="h-12 w-auto p-2"
                   alt=""
                 />
@@ -58,7 +58,7 @@ const Navigation = () => {
             <Link to={"chat"}>
               <div className="h-1/6 w-full flex items-center justify-start cursor-pointer hover:bg-sky-200 rounded-md hover:shadow-md">
                 <img
-                  src="./assets/icons/chat.png"
+                  src="/assets/icons/chat.png"
                   className="h-12 w-auto p-2"
                   alt=""
                 />

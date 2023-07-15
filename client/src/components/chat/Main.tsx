@@ -13,6 +13,7 @@ const Main = (props: any) => {
       const createMessage = await Chat.createMessage(message, props.code);
       await socket.emit("send_message", createMessage);
       messageList.push(createMessage);
+      setMessage("");
       setMessageList([...messageList]);
     }
   };

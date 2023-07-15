@@ -17,6 +17,8 @@ const getUsers = async (body) => {
     });
     if (GetUsers) {
       return GetUsers.data;
+    } else {
+      return [];
     }
   }
 };

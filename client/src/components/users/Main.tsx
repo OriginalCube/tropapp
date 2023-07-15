@@ -1,11 +1,24 @@
 import React from "react";
 import UserHeader from "./UserHeader";
 import Feed from "./Feed";
+import Chat from "../features/Chat";
 
 const Main = (props: any) => {
+  const [username, setUsername] = React.useState("");
+
+  const getUsername = async () => {
+    const name = await Chat.getAuthor();
+    if (name) setUsername(name);
+  };
+
+  React.useEffect(() => {
+    getUsername();
+  }, []);
+
   return (
     <div className="w-5/6 h-auto mt-24 flex-col">
       <UserHeader
+        username={username}
         userDetails={props.userDetails}
         id={props.id}
         getUserInfo={props.getUserInfo}

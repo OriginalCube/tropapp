@@ -159,7 +159,6 @@ const updateUser = async (req, res) => {
 const getUsername = async (req, res) => {
   try {
     const userInfo = await UserModel.findById(req.user._id);
-    console.log(userInfo);
     res.status(200).json(userInfo.username);
   } catch (err) {
     console.log(err);

@@ -1,13 +1,11 @@
 import React from "react";
 import ChatLink from "../components/features/Chat";
 import Main from "../components/chat/Main";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5000/");
 
 const Chat = (props: any) => {
   const [isJoined, setIsJoined] = React.useState(false);
   const [code, setCode] = React.useState("");
+  const { socket } = props;
 
   const onJoin = () => {
     if (code.length > 3) {
