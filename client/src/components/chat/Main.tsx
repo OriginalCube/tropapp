@@ -33,6 +33,9 @@ const Main = (props: any) => {
 
   React.useEffect(() => {
     getUsername();
+    if (props.personalMessages) {
+      setMessageList(props.personalMessages);
+    }
   }, []);
 
   return (
@@ -77,7 +80,7 @@ const Main = (props: any) => {
           >
             <img
               onClick={onMessage}
-              src="./assets/icons/paper-plane.png"
+              src="/assets/icons/paper-plane.png"
               className="w-1/2 h-auto cursor-pointer"
               alt=""
             />

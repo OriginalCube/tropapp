@@ -20,7 +20,7 @@ const Chatbox = (props: any) => {
         >
           <img
             className=" w-1/2 h-auto rounded-full"
-            src={`./assets/profile/${props.picture}.webp`}
+            src={`/assets/profile/${props.picture}.webp`}
             alt=""
           />
         </div>
@@ -49,7 +49,7 @@ const Chatbox = (props: any) => {
         >
           <img
             className=" w-1/2 h-auto rounded-full"
-            src={`./assets/profile/${props.picture}.webp`}
+            src={`/assets/profile/${props.picture}.webp`}
             alt=""
           />
         </div>

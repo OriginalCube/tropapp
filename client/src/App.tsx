@@ -17,6 +17,7 @@ const socket = io("http://localhost:5000/");
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [personalMessages, setPersonalMessages] = React.useState([]);
+  const [username, setUsername] = React.useState("");
 
   const authCheck = async () => {
     const getAuth = await Auth.getAuth();
@@ -26,16 +27,18 @@ function App() {
   //Chat reference for personal messages
   const getAuthor = async () => {
     if (loggedIn) socket.emit("join_room", await ChatCon.getAuthor());
+    setUsername(await ChatCon.getAuthor());
   };
 
   React.useEffect(() => {
-    authCheck();
-    getAuthor();
+    authCheck(); //Checks auth
+    getAuthor(); //Connect socket to user chat
   }, [loggedIn]);
 
   React.useEffect(() => {
-    socket.on("recieve_message", (data: any) => {
-      setPersonalMessages(data);
+    socket.on("receive_message", (data: any) => {
+      personalMessages.push(data);
+      setPersonalMessages([...personalMessages]);
     });
   }, [socket]);
 
@@ -44,7 +47,7 @@ function App() {
       <div className="h-full w-full flex">
         {loggedIn ? (
           <div className="w-1/6 h-full">
-            <Navigation />
+            <Navigation notif={personalMessages.length} username={username} />
           </div>
         ) : null}
         <div className={`${loggedIn ? "w-5/6" : "w-full"} bg-gray-200 h-full`}>
@@ -55,7 +58,12 @@ function App() {
               path="search"
               element={<Search setLoggedIn={setLoggedIn} />}
             />
-            <Route path="chat/:id" element={<ChatBox />} />
+            <Route
+              path="chat/:id"
+              element={
+                <ChatBox socket={socket} personalMessages={personalMessages} />
+              }
+            />
             <Route path="chat" element={<Chat socket={socket} />} />
             <Route path="profile" element={<Profile loggedIn={loggedIn} />} />
             <Route path="/:id" element={<User setLoggedIn={setLoggedIn} />} />

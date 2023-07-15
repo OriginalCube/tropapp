@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = (props: any) => {
+  console.log(props.notif);
   return (
     <div className="w-full h-full">
       <div className="w-1/6 h-screen fixed bg-white shadow-md flex items-center justify-center">
@@ -64,6 +65,20 @@ const Navigation = () => {
                 />
                 <button className="text-2xl font-medium h-full w-full text-left pl-6">
                   Chat
+                </button>
+              </div>
+            </Link>
+            <Link to={`chat/${props.username}`}>
+              <div className="h-1/6 w-full flex items-center justify-start cursor-pointer hover:bg-sky-200 rounded-md hover:shadow-md">
+                <img
+                  src="/assets/icons/notification.png"
+                  className={`h-12 w-auto p-2 rounded-xl ${
+                    props.notif > 0 ? "bg-red-500" : "bg-blue-300 "
+                  }`}
+                  alt=""
+                />
+                <button className="text-xl font-medium h-full w-full text-left pl-6">
+                  Notifications
                 </button>
               </div>
             </Link>

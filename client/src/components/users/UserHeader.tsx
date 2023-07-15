@@ -31,7 +31,7 @@ const UserHeader = (props: any) => {
         </p>
         <div className="w-1/2 text-right h-auto text-xl font-medium pr-6">
           <div className="w-1/2 flex float-right ">
-            <Link to={`/chat/${props.username}`}>
+            <Link to={`/chat/${props.userDetails.username}`}>
               <p className="w-1/2 cursor-pointer hover:text-sky-500">Message</p>
             </Link>
             <p
