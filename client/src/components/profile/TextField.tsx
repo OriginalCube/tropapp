@@ -28,7 +28,7 @@ const TextField = (props: any) => {
   return (
     <div className="w-full h-24 bg-white rounded-2xl shadow-md flex items-center justify-center">
       <div
-        className="h-full flex items-center justify-center"
+        className="hidden h-full md:flex items-center justify-center"
         style={{ width: "10%" }}
       >
         <div className="h-full w-4/6 flex justify-center items-center">
@@ -48,25 +48,25 @@ const TextField = (props: any) => {
             placeholder="Hey there!"
           ></textarea>
         </div>
-        <div className="w-1/3 h-auto flex items-center justify-evenly float-right">
+        <div className="w-1/3 h-auto flex items-center justify-evenly float-right ">
           <button
             onClick={onSubmit}
-            className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 p-2 w-20 rounded-md"
+            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-12"
           >
             Post
           </button>
           <button
             onClick={onEdit}
-            className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 p-2 w-20 rounded-md"
+            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-12"
           >
             Edit
           </button>
           <button
             onClick={onLogout}
-            className="m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 p-2 w-20 rounded-md"
+            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-14"
           >
             Logout
           </button>

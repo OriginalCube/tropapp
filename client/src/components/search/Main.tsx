@@ -27,17 +27,18 @@ const Main = () => {
   const FoundUsers = (el: any) => {
     return (
       <Link to={`/${el.username}`}>
-        <div className="w-full h-24 flex items-center justify-center cursor-pointer mt-2">
+        <div className="w-full h-12 md:h-24 flex items-center justify-center cursor-pointer mt-2">
           <div className="w-1/6 h-full flex items-center justify-center">
             <img
-              className="w-auto h-16 rounded-full"
+              className="w-auto h-8 md:h-16 rounded-full"
               src={`./assets/profile/${el.picture}.webp`}
               alt=""
             />
           </div>
           <div className="w-5/6 h-full flex items-center justify-center">
-            <p className="w-full h-full text-2xl font-bold p-2">
-              {el.username} <span className="font-light text-xl">#{el.id}</span>
+            <p className="w-full h-full text-sm md:text-2xl font-bold p-2">
+              {el.username}{" "}
+              <span className="font-light text-xs md:text-xl">#{el.id}</span>
             </p>
           </div>
         </div>{" "}

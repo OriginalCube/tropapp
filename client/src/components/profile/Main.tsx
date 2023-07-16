@@ -6,7 +6,7 @@ import EditProfile from "./EditProfile";
 const Main = (props: any) => {
   const [edit, setEdit] = React.useState(false);
   return (
-    <div className="h-auto w-5/6 flex-col items-center justcify-normal">
+    <div className="h-auto w-5/6 flex-col items-center justify-normal">
       <TextField
         userDetails={props.userDetails}
         getUserPost={props.getUserPost}
@@ -14,7 +14,7 @@ const Main = (props: any) => {
         edit={edit}
       />
       {edit ? (
-        <div className="w-full h-80 flex items-center justify-center mt-16 m-auto h-80 bg-white rounded-md shadow-md">
+        <div className="w-full h-80 flex items-center justify-center mt-16 m-auto bg-white rounded-md shadow-md">
           <EditProfile />
         </div>
       ) : null}{" "}

@@ -9,13 +9,15 @@ const Navigation = (props: any) => {
         <div className="h-5/6 w-5/6 flex-col">
           <Link to={"home"}>
             {" "}
-            <div className="h-16 w-full flex justify-center items-center">
+            <div className="h-16 w-full flex justify-center items-center ">
               <img
                 src="/assets/icons/logo.png"
                 className="h-full w-auto"
                 alt=""
               />
-              <button className="h-full w-3/4 text-4xl">TropApp</button>
+              <button className="h-full w-3/4 text-4xl hidden md:block">
+                TropApp
+              </button>
             </div>{" "}
           </Link>
           <div className="h-80 w-full mt-10 flex-col">
@@ -27,7 +29,7 @@ const Navigation = (props: any) => {
                   className="h-12 w-auto"
                   alt=""
                 />
-                <button className="text-2xl font-medium h-full w-full text-left pl-6">
+                <button className="text-2xl font-medium h-full w-full text-left pl-6 hidden md:block">
                   Home
                 </button>
               </div>{" "}
@@ -39,7 +41,7 @@ const Navigation = (props: any) => {
                   className="h-12 w-auto p-2"
                   alt=""
                 />
-                <button className="text-2xl font-medium h-full w-full text-left pl-6">
+                <button className="text-2xl font-medium h-full w-full text-left pl-6 hidden md:block">
                   Search
                 </button>
               </div>{" "}
@@ -51,7 +53,7 @@ const Navigation = (props: any) => {
                   className="h-12 w-auto p-2"
                   alt=""
                 />
-                <button className="text-2xl font-medium h-full w-full text-left pl-6">
+                <button className="text-2xl font-medium h-full w-full text-left pl-6 hidden md:block">
                   Profile
                 </button>
               </div>
@@ -63,7 +65,7 @@ const Navigation = (props: any) => {
                   className="h-12 w-auto p-2"
                   alt=""
                 />
-                <button className="text-2xl font-medium h-full w-full text-left pl-6">
+                <button className="text-2xl font-medium h-full w-full text-left pl-6 hidden md:block">
                   Chat
                 </button>
               </div>
@@ -73,11 +75,11 @@ const Navigation = (props: any) => {
                 <img
                   src="/assets/icons/notification.png"
                   className={`h-12 w-auto p-2 rounded-xl ${
-                    props.notif > 0 ? "bg-red-500" : "bg-blue-300 "
+                    props.notif > 0 ? "bg-red-500" : "bg-amber-300 "
                   }`}
                   alt=""
                 />
-                <button className="text-xl font-medium h-full w-full text-left pl-6">
+                <button className="text-xl font-medium h-full w-full text-left pl-6 hidden md:block">
                   Notifications
                 </button>
               </div>

@@ -19,7 +19,7 @@ const Chatbox = (props: any) => {
           style={{ width: "10%" }}
         >
           <img
-            className=" w-1/2 h-auto rounded-full"
+            className="w-full md:w-1/2 h-auto rounded-full"
             src={`/assets/profile/${props.picture}.webp`}
             alt=""
           />
@@ -28,7 +28,7 @@ const Chatbox = (props: any) => {
       <div className={`h-auto`} style={{ width: "90%" }}>
         <p
           className={`text-xl font-bold ${
-            isAuthor ? "text-right" : "text-left"
+            isAuthor ? "text-right mr-2 md:mr-0" : "text-left ml-2 md:ml-0"
           }`}
         >
           {props.username}
@@ -36,7 +36,7 @@ const Chatbox = (props: any) => {
         </p>
         <p
           className={`text-base font-thin ${
-            isAuthor ? "text-right" : "text-left"
+            isAuthor ? "text-right mr-2 md:mr-0" : "text-left ml-2 md:ml-0"
           }`}
         >
           {props.message}
@@ -48,7 +48,7 @@ const Chatbox = (props: any) => {
           style={{ width: "10%" }}
         >
           <img
-            className=" w-1/2 h-auto rounded-full"
+            className="w-full md:w-1/2 h-auto rounded-full"
             src={`/assets/profile/${props.picture}.webp`}
             alt=""
           />

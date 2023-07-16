@@ -32,7 +32,7 @@ const Profile = (props: any) => {
 
   return (
     <div className="h-auto flex m-auto" style={{ width: "95%" }}>
-      <div className="w-5/6 h-auto flex items-center justify-center mt-24">
+      <div className="w-full mb:w-5/6 h-auto flex items-center justify-center mt-24">
         <Main
           posts={posts}
           userDetails={userDetails}

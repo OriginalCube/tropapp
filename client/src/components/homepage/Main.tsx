@@ -32,7 +32,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="w-5/6 h-auto mt-24 flex-col ">
+    <div className="w-5/6 h-auto mt-24 flex-col">
       <TextField userDetails={userDetails} getUserPost={getUserPost} />
       {posts.length > 0 ? (
         <div className="h-auto w-full flex-col items-center justify-center shadow-md rounded-md mt-16 bg-white mb-10">

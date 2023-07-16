@@ -13,11 +13,11 @@ const Homepage = (props: any) => {
   }, []);
 
   return (
-    <div className="h-auto flex m-auto" style={{ width: "95%" }}>
-      <div className="h-auto w-5/6 flex justify-center items-center">
+    <div className="h-auto md:flex flex-col m-auto" style={{ width: "95%" }}>
+      <div className="h-auto border-2 w-full md:w-5/6 flex justify-center items-center">
         <Main />
       </div>
-      <div className="h-auto w-1/6"></div>
+      <div className="h-auto md:w-1/6 w-full"></div>
     </div>
   );
 };

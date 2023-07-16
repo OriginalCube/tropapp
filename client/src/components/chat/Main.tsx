@@ -75,8 +75,8 @@ const Main = (props: any) => {
             ></textarea>
           </div>
           <div
-            className="h-full flex items-center justify-center"
             style={{ width: "5%" }}
+            className="h-full hidden mb:flex items-center justify-center"
           >
             <img
               onClick={onMessage}

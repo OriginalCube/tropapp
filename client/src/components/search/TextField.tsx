@@ -18,7 +18,7 @@ const TextField = (props: any) => {
   return (
     <div className="w-full h-24 bg-white rounded-2xl shadow-md flex items-center justify-center">
       <div
-        className="h-full flex items-center justify-center"
+        className="h-full md:flex items-center justify-center hidden"
         style={{ width: "10%" }}
       >
         <div className="h-full w-4/6 flex justify-center items-center">
