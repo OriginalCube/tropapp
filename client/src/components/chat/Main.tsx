@@ -76,7 +76,7 @@ const Main = (props: any) => {
           </div>
           <div
             style={{ width: "5%" }}
-            className="h-full hidden mb:flex items-center justify-center"
+            className="h-full hidden md:flex items-center justify-center"
           >
             <img
               onClick={onMessage}
