@@ -69,10 +69,10 @@ const Feed = (props: any) => {
   return (
     <div className="w-full h-full flex p-2">
       <div className="w-1/6 md:h-36 h-full flex items-center justify-center  ">
-        <div className="h-auto md:w-3/5 w-full mt-3 mb:m-auto flex items-center justify-center">
+        <div className="h-auto md:w-3/5 w-full mt-3 md:m-auto flex items-center justify-center">
           <img
             src={`./assets/profile/${userDetails.picture}.webp`}
-            className="w-full h-full rounded-full"
+            className="w-auto h-full rounded-full"
             alt=""
           />
         </div>
@@ -110,17 +110,19 @@ const Feed = (props: any) => {
           <div className="w-full h-auto">
             {isUpdating ? (
               <textarea
-                className="text-sm mb:text-xl justify-center outline-none border-blue-400 border-2 text-justify p-4 rounded-md"
+                className="text-sm md:text-base justify-center outline-none border-blue-400 border-2 text-justify p-4 rounded-md"
                 rows={5}
                 cols={10}
                 value={post}
                 onChange={(e) => setPost(e.target.value)}
               />
             ) : (
-              <p className="text-sm mb:text-xl justify-center">{props.post}</p>
+              <p className="text-sm md:text-base justify-center">
+                {props.post}
+              </p>
             )}{" "}
           </div>
-          <p className="font-light text-xs mb:text-sm mt-2">
+          <p className="font-light text-xs md:text-sm mt-2">
             {date.getHours() + ":"}
             {date.getMinutes() < 10
               ? "0" + date.getMinutes()

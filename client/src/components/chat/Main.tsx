@@ -27,7 +27,6 @@ const Main = (props: any) => {
 
   const getUsername = async () => {
     const name = await Chat.getAuthor();
-    console.log(name);
     setUsername(name);
   };
 

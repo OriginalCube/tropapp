@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = (props: any) => {
-  console.log(props.notif);
   return (
     <div className="w-full h-full">
       <div className="w-1/6 h-screen fixed bg-white shadow-md flex items-center justify-center">
@@ -75,7 +74,7 @@ const Navigation = (props: any) => {
                 <img
                   src="/assets/icons/notification.png"
                   className={`h-12 w-auto p-2 rounded-xl ${
-                    props.notif > 0 ? "bg-red-500" : "bg-amber-300 "
+                    props.notif > 0 ? "bg-amber-500" : "bg-blue-300 "
                   }`}
                   alt=""
                 />

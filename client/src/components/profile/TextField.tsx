@@ -51,22 +51,22 @@ const TextField = (props: any) => {
         <div className="w-1/3 h-auto flex items-center justify-evenly float-right ">
           <button
             onClick={onSubmit}
-            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-12"
+            className="m-1 mt-4 md:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 md:p-2 md:w-20 md:text-base rounded-md text-xs p-2 w-12"
           >
             Post
           </button>
           <button
             onClick={onEdit}
-            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-12"
+            className="m-1 mt-4 md:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 md:p-2 md:w-20 md:text-base rounded-md text-xs p-2 w-12"
           >
             Edit
           </button>
           <button
             onClick={onLogout}
-            className="m-1 mt-4 mb:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
-        bg-blue-400 border-2 mb:p-2 mb:w-20 mb:text-base rounded-md text-xs p-2 w-14"
+            className="m-1 mt-4 md:m-4 border-blue-400 text-white shadow-md hover:bg-slate-200 hover:text-blue-400
+        bg-blue-400 border-2 md:p-2 md:w-20 md:text-base rounded-md text-xs p-2 w-14"
           >
             Logout
           </button>
