@@ -9,11 +9,11 @@ This project helped me understand how MERN stack fully works. It learned how eas
 and focus on developing the things that are important. This is also one of the few website that I tried to make a responsive design which helped me get a better understanding in web design.
 
 ## Time took to complete
-July 3 - 16
+July 3 - 16 <br/>
 This was a project that was done pretty fast because it's just a reworked version of my 2 previous work.
 
 ## Tools used
-MongoDB for database
-Express for backend
-React JS for front-end
-Node JS for backend
+MongoDB for database<br/>
+Express for backend<br/>
+React JS for front-end<br/>
+Node JS for backend<br/>
